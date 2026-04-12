@@ -11,19 +11,19 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0a0a0a;
-    --bg2: #111111;
-    --bg3: #161616;
-    --border: rgba(255,255,255,0.07);
-    --border-accent: rgba(255,255,255,0.15);
-    --text: #f0ede8;
-    --text-muted: #888880;
-    --text-dim: #555550;
-    --accent: #e8c547;
-    --accent-dim: rgba(232,197,71,0.12);
-    --accent-border: rgba(232,197,71,0.3);
-    --red: #e84747;
-    --green: #47c47a;
+    --bg: #07070f;
+    --bg2: #0d0d1c;
+    --bg3: #121228;
+    --border: rgba(139,92,246,0.12);
+    --border-accent: rgba(139,92,246,0.28);
+    --text: #f0eeff;
+    --text-muted: #9490b8;
+    --text-dim: #4d4a6a;
+    --accent: #a78bfa;
+    --accent-dim: rgba(167,139,250,0.1);
+    --accent-border: rgba(167,139,250,0.3);
+    --red: #f87171;
+    --green: #34d399;
     --font-display: 'Bebas Neue', sans-serif;
     --font-body: 'DM Sans', sans-serif;
     --font-mono: 'DM Mono', monospace;
@@ -78,7 +78,7 @@
     right: -200px;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(232,197,71,0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, rgba(79,70,229,0.08) 50%, transparent 70%);
     pointer-events: none;
   }
 
@@ -141,8 +141,8 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--accent);
-    color: #0a0a0a;
+    background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+    color: #ffffff;
     font-family: var(--font-body);
     font-size: 15px;
     font-weight: 500;
@@ -153,11 +153,13 @@
     transition: all 0.2s ease;
     border: none;
     cursor: pointer;
+    box-shadow: 0 4px 24px rgba(124,58,237,0.35);
   }
 
   .btn-primary:hover {
-    background: #f0d060;
+    background: linear-gradient(135deg, #6d28d9 0%, #4338ca 100%);
     transform: translateY(-1px);
+    box-shadow: 0 6px 32px rgba(124,58,237,0.5);
   }
 
   .btn-primary .arrow {
@@ -674,7 +676,7 @@
     right: 24px;
     font-family: var(--font-display);
     font-size: 160px;
-    color: rgba(232,197,71,0.04);
+    color: rgba(167,139,250,0.05);
     line-height: 1;
     pointer-events: none;
   }
@@ -840,6 +842,95 @@
     background: var(--accent-dim);
   }
 
+  /* ── IMAGES ── */
+  .hero-image {
+    margin-top: 56px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-accent);
+    box-shadow: 0 0 80px rgba(124,58,237,0.2);
+  }
+
+  .hero-image img {
+    width: 100%;
+    display: block;
+  }
+
+  .product-preview {
+    margin: 36px 0 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-accent);
+    box-shadow: 0 0 60px rgba(124,58,237,0.2);
+  }
+
+  .product-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .tool-screenshots {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 560px) {
+    .tool-screenshots { grid-template-columns: 1fr; }
+  }
+
+  .tool-screenshot {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .tool-screenshot img {
+    width: 100%;
+    display: block;
+  }
+
+  .screenshot-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  /* ── CREATOR ── */
+  .creator-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .creator-photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-border);
+    flex-shrink: 0;
+  }
+
+  .creator-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .creator-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -855,11 +946,41 @@
   @media (max-width: 600px) {
     section { padding: 60px 0; }
     .hero { padding: 80px 0 60px; }
+
+    /* Stats */
     .stats-bar { grid-template-columns: 1fr; gap: 24px; }
     .stat-item + .stat-item { border-left: none; border-top: 1px solid var(--border); padding-top: 24px; }
+
+    /* CTA */
     .cta-group { flex-direction: column; align-items: flex-start; }
     .btn-primary { width: 100%; justify-content: center; }
+
+    /* Nav */
+    .nav-logo { display: none; }
+    .nav-inner { justify-content: center; }
+    .nav-cta { width: 100%; justify-content: center; text-align: center; }
+
+    /* Guarantee */
+    .guarantee-box { padding: 24px 20px; }
+    .creator-photo { width: 56px; height: 56px; }
+
+    /* Cost items */
+    .cost-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .cost-item .loss { font-size: 12px; }
+
+    /* Trust row */
+    .trust-row { gap: 12px; justify-content: flex-start; }
+    .trust-item { font-size: 10px; }
+
+    /* Final CTA */
     .final-cta { padding: 60px 0; }
+    .final-price .amount { font-size: 48px; }
+
+    /* Section headings */
+    .section-h2 { font-size: clamp(30px, 8vw, 40px); }
+
+    /* Deliverables */
+    .deliverable-item { flex-direction: column; gap: 10px; }
   }
 </style>
 </head>
@@ -890,6 +1011,9 @@
         <strong>₹699</strong> · One-time · Lifetime access
       </div>
     </div>
+    <div class="hero-image">
+      <img src="hero-thumbnail.png" alt="Scientific Focus Audit — 2 Hour Diagnostic System">
+    </div>
   </div>
 </div>
 
@@ -897,8 +1021,8 @@
 <div class="container">
   <div class="stats-bar">
     <div class="stat-item">
-      <div class="stat-number">37+</div>
-      <div class="stat-label">Students enrolled</div>
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Professionals benefitted</div>
     </div>
     <div class="stat-item">
       <div class="stat-number">2 HRS</div>
@@ -945,6 +1069,10 @@
   <div class="container">
     <p class="section-label">What you get</p>
     <h2 class="section-h2">A diagnostic system.<br>Not a <em>video course.</em></h2>
+
+    <div class="product-preview">
+      <img src="dashboard-mockup.png" alt="Focus Audit Dashboard — Score 42, Bottleneck Diagnosis, 7-Day Reset">
+    </div>
 
     <div class="deliverables-grid">
       <div class="deliverable-item">
@@ -1073,6 +1201,17 @@
           <h3>Fix it in 7 days</h3>
           <p>Get your One Most Important Activity tailored to your score. Not generic advice. A specific intervention matched to your specific problem</p>
         </div>
+      </div>
+    </div>
+
+    <div class="tool-screenshots">
+      <div class="tool-screenshot">
+        <img src="excel-inputs.png" alt="Focus Audit — Your Inputs: Deep Work, Distraction, Dopamine Load">
+        <p class="screenshot-label">Step 1 — Enter your inputs</p>
+      </div>
+      <div class="tool-screenshot">
+        <img src="excel-scores.png" alt="Focus Audit — Your Scores & Focus Efficiency Index">
+        <p class="screenshot-label">Step 2 — See your scores</p>
       </div>
     </div>
   </div>
@@ -1205,6 +1344,13 @@
   <div class="container">
     <p class="section-label">Guarantee</p>
     <div class="guarantee-box">
+      <div class="creator-row">
+        <img src="akshay-profile.png" alt="Akshay" class="creator-photo">
+        <div>
+          <div class="creator-name">Akshay</div>
+          <div class="creator-title">Creator, Scientific Focus Audit</div>
+        </div>
+      </div>
       <h3>Complete the audit. Or get your money back.</h3>
       <p>Go through the system. If you don't identify your single biggest attention leak within 2 hours — <strong>email me at teamtrunkwise@gmail.com and I'll refund you in full.</strong> No questions asked.</p>
       <p style="font-size: 14px; color: var(--text-dim);">I'm that confident in what this does. Because it did it for me first.</p>
@@ -1227,7 +1373,7 @@
     <div class="trust-row">
       <span class="trust-item">Instant access</span>
       <span class="trust-item">Full refund guarantee</span>
-      <span class="trust-item">37+ students enrolled</span>
+      <span class="trust-item">100+ professionals benefitted</span>
       <span class="trust-item">Results in 7 days</span>
     </div>
   </div>
@@ -1237,7 +1383,7 @@
 <footer>
   <div class="container">
     <p>Questions? Email <a href="mailto:teamtrunkwise@gmail.com">teamtrunkwise@gmail.com</a></p>
-    <p style="margin-top: 8px;">© 2025 Scientific Focus Audit · All rights reserved</p>
+    <p style="margin-top: 8px;">© 2026 Scientific Focus Audit · All rights reserved</p>
   </div>
 </footer>
 
