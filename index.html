@@ -82,6 +82,20 @@
     pointer-events: none;
   }
 
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(124,58,237,0.15);
+    border: 1px solid rgba(124,58,237,0.35);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+
   .hero-eyebrow {
     font-family: var(--font-mono);
     font-size: 11px;
@@ -214,6 +228,12 @@
     font-family: var(--font-mono);
   }
 
+  .stat-stars {
+    color: #f59e0b;
+    font-size: 22px;
+    vertical-align: middle;
+  }
+
   /* ── SECTION LABELS ── */
   .section-label {
     font-family: var(--font-mono);
@@ -321,6 +341,19 @@
   .callout span {
     font-size: 14px;
     color: var(--text-muted);
+  }
+
+  .focus-image-wrap {
+    margin-top: 48px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-accent);
+    box-shadow: 0 0 60px rgba(124,58,237,0.15);
+  }
+
+  .focus-image-wrap img {
+    width: 100%;
+    display: block;
   }
 
   /* ── WHAT YOU GET ── */
@@ -856,6 +889,13 @@
     display: block;
   }
 
+  .hero-image iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    border: none;
+  }
+
   .product-preview {
     margin: 36px 0 0;
     border-radius: 12px;
@@ -945,20 +985,38 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
     section { padding: 60px 0; }
-    .hero { padding: 80px 0 60px; }
 
-    /* Stats */
-    .stats-bar { grid-template-columns: 1fr; gap: 24px; }
-    .stat-item + .stat-item { border-left: none; border-top: 1px solid var(--border); padding-top: 24px; }
+    /* Hero */
+    .hero { padding: 50px 0 60px; }
+    .hero-badge { display: inline-flex; }
+    .hero h1 { font-size: clamp(36px, 10vw, 56px); text-align: center; }
+    .hero-sub { font-size: 15px; text-align: center; max-width: 100%; }
+    .hero-image iframe { width: 100%; aspect-ratio: 16 / 9; }
 
     /* CTA */
-    .cta-group { flex-direction: column; align-items: flex-start; }
+    .cta-group { flex-direction: column; align-items: stretch; gap: 14px; }
     .btn-primary { width: 100%; justify-content: center; }
+    .price-note { text-align: center; }
+
+    /* Stats — 2-column grid */
+    .stats-bar { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .stat-item + .stat-item { border-left: none; }
+    .stat-number { font-size: 28px; }
+    .stat-stars { font-size: 16px; }
 
     /* Nav */
     .nav-logo { display: none; }
     .nav-inner { justify-content: center; }
     .nav-cta { width: 100%; justify-content: center; text-align: center; }
+
+    /* Section headings */
+    .section-h2 { font-size: clamp(28px, 8vw, 40px); }
+
+    /* Deliverables */
+    .deliverable-item { flex-direction: column; gap: 10px; }
+
+    /* Phases */
+    .phase-item { gap: 14px; }
 
     /* Guarantee */
     .guarantee-box { padding: 24px 20px; }
@@ -969,18 +1027,15 @@
     .cost-item .loss { font-size: 12px; }
 
     /* Trust row */
-    .trust-row { gap: 12px; justify-content: flex-start; }
+    .trust-row { gap: 10px; flex-wrap: wrap; justify-content: center; }
     .trust-item { font-size: 10px; }
 
     /* Final CTA */
     .final-cta { padding: 60px 0; }
     .final-price .amount { font-size: 48px; }
 
-    /* Section headings */
-    .section-h2 { font-size: clamp(30px, 8vw, 40px); }
-
-    /* Deliverables */
-    .deliverable-item { flex-direction: column; gap: 10px; }
+    /* Focus image */
+    .focus-image-wrap { margin-top: 32px; border-radius: 10px; }
   }
 </style>
 </head>
@@ -997,8 +1052,9 @@
 <!-- HERO -->
 <div class="hero">
   <div class="container">
+    <div class="hero-badge">🇮🇳 First time in India</div>
     <p class="hero-eyebrow">2-Hour Diagnostic System</p>
-    <h1>You're Working Hard.<br>Your Output <em>Doesn't</em><br>Match.</h1>
+    <h1>your <em>hardwork</em> ≠ your <em>results</em></h1>
     <p class="hero-sub">
       Here's why — and how to fix it in <strong>7 days.</strong><br>
       This is a diagnostic system for your attention. Not motivation. Not hacks. A system that <strong>measures the real problem</strong> and fixes it.
@@ -1012,7 +1068,7 @@
       </div>
     </div>
     <div class="hero-image">
-      <img src="hero-thumbnail.png" alt="Scientific Focus Audit — 2 Hour Diagnostic System">
+      <iframe src="https://www.youtube.com/embed/i9Z4-1I5RbQ?rel=0&modestbranding=1" allowfullscreen></iframe>
     </div>
   </div>
 </div>
@@ -1021,16 +1077,16 @@
 <div class="container">
   <div class="stats-bar">
     <div class="stat-item">
+      <div class="stat-number">4.9 <span class="stat-stars">★★★★★</span></div>
+      <div class="stat-label">Average rating</div>
+    </div>
+    <div class="stat-item">
       <div class="stat-number">100+</div>
       <div class="stat-label">Professionals benefitted</div>
     </div>
     <div class="stat-item">
       <div class="stat-number">2 HRS</div>
       <div class="stat-label">To complete the audit</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">7 DAYS</div>
-      <div class="stat-label">To measurable change</div>
     </div>
   </div>
 </div>
@@ -1061,6 +1117,10 @@
       <p>Nothing sticks. Because you never diagnosed the real problem.</p>
       <span>This system fixes that. No guessing. No fluff. No motivation. Just clarity + execution.</span>
     </div>
+
+    <div class="focus-image-wrap">
+      <img src="Gemini_Generated_Image_urg40furg40furg4.jpg" alt="The science of focus">
+    </div>
   </div>
 </section>
 
@@ -1071,7 +1131,7 @@
     <h2 class="section-h2">A diagnostic system.<br>Not a <em>video course.</em></h2>
 
     <div class="product-preview">
-      <img src="dashboard-mockup.png" alt="Focus Audit Dashboard — Score 42, Bottleneck Diagnosis, 7-Day Reset">
+      <img src="dashboard-mockup.jpg" alt="Focus Audit Dashboard — Score 42, Bottleneck Diagnosis, 7-Day Reset">
     </div>
 
     <div class="deliverables-grid">
