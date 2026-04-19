@@ -998,11 +998,13 @@
     .btn-primary { width: 100%; justify-content: center; }
     .price-note { text-align: center; }
 
-    /* Stats — 2-column grid */
-    .stats-bar { grid-template-columns: 1fr 1fr; gap: 20px; }
-    .stat-item + .stat-item { border-left: none; }
-    .stat-number { font-size: 28px; }
-    .stat-stars { font-size: 16px; }
+    /* Stats — single column, stacked */
+    .stats-bar { grid-template-columns: 1fr; gap: 0; }
+    .stat-item { padding: 20px 0; }
+    .stat-item + .stat-item { border-left: none; border-top: 1px solid var(--border); }
+    .stat-number { font-size: 36px; }
+    .stat-label { font-size: 13px; }
+    .stat-stars { font-size: 20px; }
 
     /* Nav */
     .nav-logo { display: none; }
